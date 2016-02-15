@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h1>Create letter:</h1>
+        <h:form>
+            <h:inputText id ="EmployeeName" value="#{Employee}" a:placeholder="Employee Name"/>  <br/>
+            <h:inputText id ="inputName" value="#{User.name}" a:placeholder="You name"/>  <br/>    
+            <h:inputText id ="inputSurname" value="#{User.surname}" a:placeholder="You surname"/>  <br/>
+            <h:inputText id ="inputAge" value="#{User.age}" a:placeholder="Age"/>  <br/>
+            <h:inputTextarea id ="inputText" value ="#{Message}" a:placeholder="Message"/> <br/>
+            Your latter: <br/>
+            Dear <h:outputLabel id="OutEmployee" value="#{Employee}"/>,
+            I <h:outputLabel id="outName" value="#{User.name}"/> &nbsp;
+             <h:outputLabel id="outSurname" value="#{User.surname}"/>, me
+            <h:outputLabel id="outAge" value="#{User.age}"/> years<br/>
+            <h:outputLabel id="outMessage" value="#{Message}"/>
+            <br/>
+            <h:outputLabel id="outNameTwo" value="#{User.name}"/> &nbsp;
+             <h:outputLabel id="outSurnameTwo" value="#{User.surname}"/>
+             <br/>Jobseeker
+            <f:ajax event="keyup" execute="EmployeeName" render="OutEmployee"/>
+            <f:ajax event="keyup" execute="inputName" render="outName"/>
+            <f:ajax event="keyup" execute="inputName" render="outNameTwo"/>
+            <f:ajax event="keyup" execute="inputName" render="outSurnameTwo"/>
+            <f:ajax event="keyup" execute="inputSurname" render="outSurname"/>
+            <f:ajax event="keyup" execute="inputAge" render="outAge"/>
+            <f:ajax event="keyup" execute="inputText" render="outMessage"/>
+        </h:form>
+        <h1>Button Test:</h1>
+        <h:form>
+            <h:inputText id ="inputName" value="#{User.name}" a:placeholder="You name"/>  <br/>    
+            <h:inputText id ="inputSurname" value="#{User.surname}" a:placeholder="You surname"/>  <br/> 
+            <h:commandButton value="Submit">
+                <f:ajax execute="inputName" render="outputName"/>
+                <f:ajax execute="inputSurname" render="outputSurname"/>
+            </h:commandButton>
+            <br/>
+            <h:outputText id="outputName" value="#{User.name}"/> &nbsp;<h:outputText id="outputSurname" value="#{User.surname}"/>
+        </h:form>
+    </h:body>
+</html>
+
