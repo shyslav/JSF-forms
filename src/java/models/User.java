@@ -2,7 +2,9 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -82,4 +84,16 @@ public class User {
         this.age = age;
     }
     
+    public void check()
+    {
+        FacesContext faces = FacesContext.getCurrentInstance();
+        if(name.equals(surname))
+        {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"\"Error. Username and surname are the same\"",null));
+        }
+        else
+        {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Great!",null));
+        }
+    }
 }
